@@ -1,0 +1,53 @@
+#include "czezar.h"
+using namespace std;
+Shifr::Shifr(int k) :k(key) {} 
+Shifr::keyException::keyException(unsigned int key):
+	 Exceptionaesar::Exception:: Exception(string msg):
+	mess(msg) {}(string("Shifr: weaked key") + to_string(key) ) {}
+
+
+const char* Shifr:: Exception::what()
+{
+	return mess.data();
+}
+
+
+
+
+//Caesar class realisation
+
+Shifr::Shifr(unsigned int k):loc("C"), key(k% AlphaLen)
+{
+	if (key == 0) {
+		throw Shifr::key Exception(k);
+	}
+}
+char Shifr::shift( const char c) 
+{ 
+	char rc = c + key;
+	if (rc >'Z') {
+		rc -= sizeEN;
+	}
+	return rc;
+}
+
+
+
+ string Shifr::shifrovka( const string str)
+	{
+		string res;
+		for(int i=0;i<str.size();i++)
+			res+=shift(str[i]);
+		return res;
+
+
+	}
+
+
+	string Shifr::deshifrovka(const string str)
+	{
+		string res;
+		for(int i=0;i<str.size();i++)
+			res+=shift(str[i]),sizeEN-key;
+		return res;
+}

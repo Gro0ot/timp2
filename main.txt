@@ -1,0 +1,25 @@
+#include "czezar.h"
+using namespace std;
+int main()
+{
+	int k;
+	try{
+		{
+			setlocale(LC_ALL,"Russian");
+		}
+		string s;
+		cout<<"Введите слово латинскими символами  "<<endl;
+		cin>>s;
+		cout<<"Введите ключ"<<endl;
+		cin>>k;
+		Shifr x(k); 
+
+		string z_text= x.shifrovka(s); 
+		string r_text = x.deshifrovka(z_text); 
+		cout<<z_text <<endl<<r_text<<endl; 
+	}
+	catch (Shifr::Exception& e) {
+		cerr<<e.what()<<endl;
+	}
+	return 0; 
+}
