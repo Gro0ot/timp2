@@ -1,39 +1,33 @@
-#ifndef CZEZAR_H 
-#define CZEZAR_H 
+#ifndef CZEZAR_H
+#define CZEZAR_H
 #include <iostream> 
 #include <cstdlib> 
 #include <string> 
-#include <exception> 
-#include<locale> 
-using namespace std; 
-class czezar 
+#include <exception>
+#include<locale>
+using namespace std;
+class czezar
 { 
 private: 
-locale loc; 
-char Shift(char s1); 
-char Shift1(char s1); 
-int k; 
-enum {sizeEN=26}; 
+	locale loc;
+	char Shift(char s1);
+	char Shift1(char s1);
+	int k; 
+	enum {sizeEN=26};
 public: 
-czezar(int key); 
-string shif(const string str); 
-string deshif(const string str); 
-~czezar(); 
-public: 
-// exceptions 
-class Exception: public exception 
-{ 
-private: 
-string mess; 
-public: 
-Exception(string msg); 
-virtual const char* what(); 
-}; 
+	czezar(int key); 
+	string shif(const string str); 
+	string deshif(const string str); 
+	~czezar();
+public:
+	// exceptions
 
-class keyException: public Exception 
-{ 
-public: 
-keyException(unsigned int key); 
-}; 
+	class Exception: public exception
+	{
+	private:
+		string mess;
+	public:
+		virtual const char* what();
+	};
 }; 
 #endif

@@ -1,78 +1,64 @@
-#include "czezar.h" 
-
+##include "czezar.h"
 czezar::czezar(int key) :k(key) {} 
-
-
-const char* czezar:: Exception::what() 
-{ 
-return mess.data(); 
-} 
-
-/*czezar::keyException::keyException(unsigned int key): 
-czezar::Exception:Exception(string msg) 
-mess(msg) {} 
-(string("Caesar: weaked key") + to_string(key) ) {} 
-
-
-czezar::czezar(int key):loc("C"),k(k%sizeEN) { 
-if (k == 0) { 
-throw czezar::keyException(k); 
-}*/ 
-//} 
+const char* czezar:: Exception::what()
+{
+	return "Ooops!\n";
+}
 char czezar::Shift(char sl) 
 { 
-char buf[26] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' }; 
-for(int j = 0; j < sizeEN; j++) 
-{ 
-if (sl == buf[j]) 
-{ 
-if (j >= sizeEN) 
-{j -= sizeEN; //Если значение вышло за диапазон, 
-while (j < 0) j += sizeEN; 
-}//корректируем его 
-sl=buf[j+k]; 
-break; 
-} 
-} 
-return sl; 
-} 
+	char buf[26] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' }; 
+	for(int j = 0; j < sizeEN; j++)
+	{ 
+		if (sl == buf[j]) 
+		{
+			if (j >= sizeEN) 
+			{j -= sizeEN; //Если значение вышло за диапазон,
+			while (j < 0) j += sizeEN;
+			}//корректируем его
+			sl=buf[j+k];
+			break; 
+		}
+	}
+	return sl;
+}
 char czezar::Shift1(char sl) 
 { 
-char buf[26] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' }; 
-for(int j = 0; j < sizeEN; j++) 
-{ 
-if (sl == buf[j]) 
-{ 
-if (j >= sizeEN) 
-{j -= sizeEN; //Если значение вышло за диапазон, 
-while (j < 0) j += sizeEN; 
-}//корректируем его 
-sl=buf[j-k]; 
-break; 
-} 
-} 
-return sl; 
-} 
-czezar::~czezar() 
-{ 
-k=0; 
-} 
-
-string czezar::shif(const string str) 
-{ 
-string res; 
-for(int i=0;i<str.size();i++) 
-res+=Shift(str[i]); 
-return res; 
-
-
-} 
-
-
-string czezar::deshif(const string str) 
-{ 
-string res; 
-for(int i=0;i<str.size();i++) 
-res+=Shift1(str[i]),sizeEN-k; 
-return res; 
+	char buf[26] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' }; 
+	for(int j = 0; j < sizeEN; j++)
+	{ 
+		if (sl == buf[j]) 
+		{
+			if (j >= sizeEN) 
+			{j -= sizeEN; //Если значение вышло за диапазон,
+			while (j < 0) j += sizeEN;
+			}//корректируем его
+			sl=buf[j-k];
+			break; 
+		}
+	}
+	return sl;
 }
+czezar::~czezar()
+{
+	k=0;
+}
+
+string czezar::shif(const string str)
+{
+	string res;
+	for(int i=0;i<str.size();i++)
+		res+=Shift(str[i]);
+	return res;
+
+
+}
+
+
+string czezar::deshif(const string str)
+{
+	string res;
+	for(int i=0;i<str.size();i++)
+		res+=Shift1(str[i]),sizeEN-k;
+	return res;
+}
+

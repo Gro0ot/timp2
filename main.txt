@@ -1,31 +1,39 @@
 #include <iostream> 
 #include <cstdlib> 
 #include <string> 
-#include "czezar.h" 
+#include "czezar.h"
 using namespace std; 
 
 
 int main() 
 { 
-try{ 
-setlocale(LC_ALL,"Russian"); 
-int k,i=0; 
-string sl; 
-cout « "Введите фразу" « endl; 
-cin»sl; 
+	try{
+	setlocale(LC_ALL,"Russian");
+	int k,i=0; 
+	string sl; 
+	cout << "Введите фразу" << endl; 
+	cin>>sl; 
 
-cout « "Введите ключ" « endl; 
-cin » k; 
+	cout << "Введите ключ" << endl; 
+	cin >> k; 
+	if (k == 0) {
+		throw 2;}
+	czezar x(k); 
 
-czezar x(k); 
-
-string z_text= x.shif(sl); 
-string r_text = x.deshif(z_text); 
-cout «z_text « endl «r_text « endl; 
-return 0; 
-} 
-catch (czezar::Exception& e) { 
-cerr«e.what()«endl; 
-} 
+	string z_text= x.shif(sl); 
+	string r_text = x.deshif(z_text); 
+	cout <<z_text << endl <<r_text << endl; 
 return 0; 
 }
+	catch (czezar::Exception& e) {
+		cerr<<e.what()<<endl;}
+		catch (...)
+	{
+		{
+			cout << "enter the key in the range from 1 to 25 ";
+		}
+
+	}
+	return 0; 
+}
+
