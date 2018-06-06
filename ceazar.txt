@@ -1,84 +1,33 @@
-#include"czezar.h"
-Shifr::Shifr(int k){
-	key=k;
-}
-
-Shifr::~Shifr()
-{
-	key=0;
-}
-/* старый бред
-if(m[i]>='A'&&m[i]<='Z') 
-{ 
-m[i] += 'a' - 'A'; 
-} 
-else m[i] -= 'a' - 'A'; 
-for (n=0; n < 10; n++)
-{
-for (i = 0; i < 26; i++)
-{
-if (buf[n] == m[i])
-{
-if (i >= 26)
-buf[n] = m[i-26];
-else
-buf[n] = m[i+k];
-break;
-}
-return m;
-2)if(m[i]>='A'&&m[i]<='Z') 
-{ 
-m[i] += 'a' - 'A'; 
-} 
-else m[i] -= 'a' - 'A'; 
-for (n=0; n < 10; n++)
-{
-for (i = 0; i < 26; i++)
-{
-if (buf[n] == m[i])
-{
-if (i >= 26)
-buf[n] = m[i-26];
-else
-buf[n] = m[i-k];
-break;
-}
-return m;
-*/
-/*char shift(char s)
-{
-for (i = 0; i < 26; i++) 
-{ 
-if ((s == m[i])&((i + k) < 26)) 
-{ 
-s = m[i + k]; 
-break ;
-} 
-else
-if ((s == m[i])&((i + k) > 25)) 
-{ 
-s = m[i + k - 26]; 
-break;
-} 
-} 
-return s; 
-}
-*/
-string Shifr::shifrovka(const string str)
-{
-	string res;
-	for(int i;i<str.size();i++)
-		res+=shift(str[i]);
-	return res;
+#include "czezar.h"
+using namespace std;
+Shifr::Shifr(int k) :k(key) {} 
+Shifr::keyException::keyException(unsigned int key):
+	 Exceptionaesar::Exception:: Exception(string msg):
+	mess(msg) {}(string("Shifr: weaked key") + to_string(key) ) {}
 
 
+const char* Shifr:: Exception::what()
+{
+	return mess.data();
 }
 
 
-string Shifr::decode(const string str)
+
+
+//Caesar class realisation
+
+Shifr::Shifr(unsigned int k):loc("C"), key(k% AlphaLen)
 {
-	string res;
-	for(int i;i<str.size();i++)
-		res+=shift(str[i]),sizeEN-key;
-	return res;
+	if (key == 0) {
+		throw Shifr::key Exception(k);
+	}
 }
+char Shifr::shift( const char c) 
+{ 
+	char rc = c + key;
+	if (rc >'Z') {
+		rc -= sizeEN;
+	}
+	return rc;
+}
+
