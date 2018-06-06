@@ -1,47 +1,26 @@
-#pragma once
-#include <iostream> 
-#include <cstdlib> 
-#include <string> 
-#include<locale>
-#include <exception>
-
-class Shifr 
-{ 
-private: 
-	enum {sizeEN=26};
+#ifndef CZEZAR_H
+#define CZEZAR_H
+#include <iostream>
+#include <string>
+using namespace std;
+int i=0, n=0, k,d;
+char m[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+	char buf[255];
 	char shift(const char c);
-		int key;
-		int k;
-string beforeEncrypt(const string s);
-	void beforeDecrypt(const string s);
-public: 
-	Shifr(int key); 
-	string shifrovka( string str);
-	string deshifrovka(const string str);
-	~Shifr();
+	int key;
+	int sizeEN=26;
+class Shifr
+{
 public:
-// exceptions
-	class Exception: public exception
-	{
-	private:
-		string mess;
-	public:
-		Exception(string msg);
-		virtual const char* what();
-	};
-
-	class keyException: public Exception
-	{
-	public:
-		keyException(unsigned int key);
-	};
+	Shifr(int k);
+	string shifrovka(const string str);
+	string decode(string str);
+	~Shifr();
 
 
-
-	class charException: public Exception
-	{
-	public:
-		charException(unsigned char c);
-	};
 };
 
+
+
+
+#endif
